@@ -1,0 +1,29 @@
+{
+  "name": "zf-webpack202111",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prod": "cross-env NODE_ENV=production webpack",
+    "dev": "cross-env NODE_ENV=development webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weisuoke/zf-webpack202111.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/weisuoke/zf-webpack202111/issues"
+  },
+  "homepage": "https://github.com/weisuoke/zf-webpack202111#readme",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.6.0",
+    "html-webpack-plugin": "^5.5.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.68.0",
+    "webpack-cli": "^4.9.2"
+  }
+}
