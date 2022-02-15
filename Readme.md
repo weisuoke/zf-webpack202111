@@ -55,3 +55,15 @@ postcss-loader
 - webpack5 不再需要 
   - file-loader => asset/resource 把图片拷贝到输出目录里去，返回一个输出后的路径，包括文件
   - url-loader => asset/inline 不拷贝文件，直接把源文件变成 base64 字符串。内嵌到输出结果。
+
+## 加载第三方库
+1. 直接引入
+   - 每次使用都需要手工导入
+2. 插件引入
+   - 如果使用 `webpack.Provide` 插件引入的话，则不再需要你在模块手工引入。
+   - 缺点：
+     - 不会放到全局变量上，模块外是无法访问的。
+     - 如果想再任何地方访问变量，需要把此变量设置为环境变量 `window.isarray`
+3. expose-loader 可以把模块添加到全局对象上
+以上三种方式，都需要打包库的代码，不能使用 CDN
+   

@@ -22,6 +22,11 @@ module.exports = {
       '@': path.resolve('src')
     }
   },
+  // 如果你配置了 external, key 是库的名字，值是全局变量名
+  // 以后你再引入这个库的时候，直接从全局变量名上取值即可
+  externals: {
+    lodash: '_'
+  },
   module: {
     rules: [
       {
@@ -56,6 +61,20 @@ module.exports = {
         generator: {
           filename: '[hash][ext]'
         }
+      },
+      {
+        test: /isarray/,
+        use: [
+          {
+            loader: "expose-loader",
+            options: {
+              exposes: {
+                globalName: 'isarray',
+                override: true
+              }
+            }
+          }
+        ]
       }
     ]
   },
@@ -63,8 +82,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/index.html"
     }),
-    // new webpack.DefinePlugin({
-    //   'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    new webpack.DefinePlugin({
+    }),
+    // new webpack.ProvidePlugin({
+    //   isarray: "isarray"
     // })
   ]
 }
