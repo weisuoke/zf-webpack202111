@@ -16,6 +16,21 @@ module.exports = {
   devServer: {
     port: 8080, // 配置开发预览服务器的端口号 8080
     open: true, // 打包后会自动打开浏览器
+    proxy: {
+      // 把访问路径是以 /api 开头的请求都转发到 3000
+      '/api': {
+        target: 'http://localhost:3000',  // 重定向的域名
+        pathRewrite: {  // 重写的路径
+          "^/api": ""
+        }
+      }
+    },
+    // 在webpack-dev-server 静态资源中间件处理之前，可以用于拦截部分请求返回特定内容，以实现简单的 mock
+    onBeforeSetupMiddleware({ app }) {
+      app.get('/api/users2', (req, res) => {
+        res.json([{ id: 1, name: "张三" }, {id: 2, name: "李四"}])
+      })
+    }
   },
   resolve: {
     alias: {
