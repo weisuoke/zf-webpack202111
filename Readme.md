@@ -28,3 +28,30 @@
   - --env用来设置webpack配置文件的函数参数
   - cross-env用来设置node环境的process.env.NODE_ENV
   - DefinePlugin用来设置模块内的全局变量
+
+## webpack-dev-server 开发服务器原理
+
+- 也是会用 webpack 从入口文件进行打包，然后输出到输出目录，这个输出是输出到内存文件系统里去了
+- 然后会启动一个 http 服务器，去预览我们的项目
+
+less 用于把 less 编译成 CSS
+less-loader
+node-sass 用于把 sass 编译成 CSS
+sass-loader
+
+为了引入 node_modules 下面的资源文件，可以添加 `~`前缀
+
+### css兼容性
+
+postcss
+postcss-loader
+
+- css-loader中的options配置项`importLoaders`
+  - `importLoaders` 允许或者说启用几个数量的`loaders`应用在import的文件
+
+### 图片资源加载
+
+- webpack4 关于图片需要 使用 file-loader url-loader
+- webpack5 不再需要 
+  - file-loader => asset/resource 把图片拷贝到输出目录里去，返回一个输出后的路径，包括文件
+  - url-loader => asset/inline 不拷贝文件，直接把源文件变成 base64 字符串。内嵌到输出结果。

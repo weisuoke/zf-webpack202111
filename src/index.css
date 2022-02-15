@@ -1,6 +1,13 @@
-/*@import "base.css";*/
+@import "base.css";
 
 body {
   color: red;
-  /*background: url(./tx.png);*/
+  /*background: url(@/tx.png);*/
+}
+
+#postcss {
+  width: 100px;
+  height: 50px;
+  background: pink;
+  transform: rotate(45deg);
 }
